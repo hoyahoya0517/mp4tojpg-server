@@ -6,12 +6,12 @@ const ffmpegPath = ffmpegInstaller.path;
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 export async function getVideo(req, res, next) {
+  console.log("1.24");
   let duration = await new Promise((resolve, reject) => {
     ffmpeg.ffprobe(
       "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1727679157145_video22_vhm7v7.mp4",
       (err, metadata) => {
         console.log(metadata);
-        console.log(metadata.format.duration);
         resolve(metadata.format.duration);
       }
     );
