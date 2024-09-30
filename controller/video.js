@@ -1,10 +1,12 @@
 import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
+import ffmpegInstallerffprobe from "@ffprobe-installer/ffprobe";
 import ffmpeg from "fluent-ffmpeg";
 import "express-async-errors";
 
 const ffmpegPath = ffmpegInstaller.path;
+const ffprobePath = ffmpegInstallerffprobe.path;
 ffmpeg.setFfmpegPath(ffmpegPath);
-
+ffmpeg.setFfprobePath(ffprobePath);
 export async function getVideo(req, res, next) {
   console.log("1.24");
   let duration = await new Promise((resolve, reject) => {
