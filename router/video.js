@@ -33,6 +33,19 @@ const upload = multer({
   limits: { fileSize: 100 * 1024 * 1024 },
 });
 
+// router.post("/", (req, res, next) => {
+//   res.json([
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_1.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_2.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_3.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_4.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_5.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_6.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_7.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_8.jpg",
+//     "https://sakaomp4tojpg.s3.ap-northeast-2.amazonaws.com/1728139527404_9.jpg",
+//   ]);
+// });
 router.post("/", upload.single("video"), videoController.getVideo);
 
 export default router;

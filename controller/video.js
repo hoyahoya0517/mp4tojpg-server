@@ -49,7 +49,7 @@ export async function getVideo(req, res, next) {
       })
       .screenshots({
         // Will take screens at 20%, 40%, 60% and 80% of the video
-        count: duration,
+        count: duration * 7,
         folder: `public/${date}`,
         size: `${width}x${height}`,
         filename: `${date}.jpg`,
