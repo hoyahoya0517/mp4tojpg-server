@@ -21,11 +21,13 @@ const s3 = new S3Client({
 });
 
 export async function getVideo(req, res, next) {
+  console.log("mp4tojpg start");
   let jpgs = [];
   let uploadUrl = [];
   let date = "";
   let width = "";
   let height = "";
+  let divide = 1;
   let duration = await new Promise((resolve, reject) => {
     ffmpeg.ffprobe(req.file.location, (err, metadata) => {
       date = Date.now().toString();
@@ -35,7 +37,14 @@ export async function getVideo(req, res, next) {
     });
   });
   duration = Math.floor(duration);
-
+  console.log(duration);
+  if (duration < 50) {
+    divide = 3;
+  } else if (duration < 85) {
+    divide = 2;
+  } else {
+    divide = 1;
+  }
   const ffmpegResult = await new Promise((resolve, reject) => {
     ffmpeg(req.file.location)
       .on("filenames", function (filenames) {
@@ -49,7 +58,7 @@ export async function getVideo(req, res, next) {
       })
       .screenshots({
         // Will take screens at 20%, 40%, 60% and 80% of the video
-        count: duration * 7,
+        count: duration * divide,
         folder: `public/${date}`,
         size: `${width}x${height}`,
         filename: `${date}.jpg`,

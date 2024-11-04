@@ -30,30 +30,3 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(8080);
-// const ffmpegPath = ffmpegInstaller.path;
-// ffmpeg.setFfmpegPath(ffmpegPath);
-
-// let duration;
-// ffmpeg.ffprobe(
-//   "https://res.cloudinary.com/hoyahoya/video/upload/v1703048422/letter/videoplayback.CUT.05_16-05_30_oexws3.mp4",
-//   (err, metadata) => {
-//     duration = metadata.format.duration;
-//   }
-// );
-
-// ffmpeg(
-//   "https://res.cloudinary.com/hoyahoya/video/upload/v1703048422/letter/videoplayback.CUT.05_16-05_30_oexws3.mp4"
-// )
-//   .on("filenames", function (filenames) {
-//     console.log("Will generate " + filenames.join(", "));
-//   })
-//   .on("end", function () {
-//     console.log("Screenshots taken");
-//   })
-//   .screenshots({
-//     // Will take screens at 20%, 40%, 60% and 80% of the video
-//     count: 140,
-//     folder: "public/test",
-//     size: "320x320",
-//     filename: "test.jpg",
-//   });
